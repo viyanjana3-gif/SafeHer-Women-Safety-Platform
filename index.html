@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeHer - Women Safety Platform</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1 id="s">^-^ Welcome to SafeHer ^-^</h1>
+
+    <p class="title">Women Safety & Emergency Assistance</p>
+    <p class="title">Your Safety, Our Priority</p>
+
+    <h3>Emergency Assistance</h3>
+    <h3>Trusted Contacts</h3>
+    <h3>Safety Map</h3>
+    <h3>Safety Check-in</h3>
+    <h3>Incident Reporting</h3>
+
+    <button id="btn">Change Color</button>
+    <h4 id="helo">Stay Safe, Stay Strong!</h4>
+
+    <button id="btn1">Click Here</button>
+    <h5 id="text"></h5>
+
+</body>
+
+<script>
+    document.getElementById("s").style.color = "purple";
+
+    let elements = document.getElementsByClassName("title");
+
+    for(let i = 0; i < elements.length; i++) {
+        elements[i].style.backgroundColor = "lavender";
+        elements[i].style.fontSize = "20px";
+    }
+
+    let elem = document.getElementById("btn");
+
+    elem.addEventListener("click", () => {
+        document.getElementById("helo").style.color = "brown";
+    });
+
+    let elem1 = document.getElementById("btn1");
+
+    elem1.addEventListener("click", () => {
+        document.getElementById("text").textContent = "Your Safety Matters! ^-^";
+    });
+</script>
+
+</html>
