@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import SafetyCard from '../components/SafetyCard'
 import SOSButton from '../components/SOSButton'
+import EmergencyContactForm from '../components/EmergencyContactForm'
+import EmergencyContactDetails from '../components/EmergencyContactDetails'
 
 function Dashboard() {
 
   const [safetyData, setSafetyData] = useState([])
   const [loading, setLoading] = useState(true)
+  const [contacts, setContacts] = useState([])
 
   // XSS Auto-Escaping Demo
   const userInput = '<img src=x onerror=alert("Hacked") />'
@@ -27,6 +30,11 @@ function Dashboard() {
     }, 2000)
 
   }, [])
+
+  // Add Emergency Contact
+  const addEmergencyContact = (contact) => {
+    setContacts([...contacts, contact])
+  }
 
   return (
     <div className="flex-1 bg-pink-50 p-6">
@@ -65,6 +73,32 @@ function Dashboard() {
         <SOSButton />
       </div>
 
+      {/* Emergency Contact Form */}
+      <div className="mt-8">
+
+        <EmergencyContactForm
+          addEmergencyContact={addEmergencyContact}
+        />
+
+      </div>
+
+      {/* Display Saved Emergency Contacts */}
+      <div className="mt-8">
+
+        <h2 className="text-xl font-bold text-purple-800 mb-4">
+          Saved Emergency Contacts
+        </h2>
+
+        {contacts.map((contact, index) => (
+          <EmergencyContactDetails
+            key={index}
+            {...contact}
+          />
+        ))}
+
+      </div>
+
+      {/* Safety Reminder */}
       <div className="mt-8 bg-white p-5 rounded-xl shadow-md">
 
         <h2 className="text-xl font-bold text-purple-800">
